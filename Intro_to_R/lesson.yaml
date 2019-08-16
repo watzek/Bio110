@@ -99,29 +99,14 @@
 - Class: text
   Output: Finally, let's learn how to import an Excel or Google Sheets data file into R. In another window for either Excel or Google sheets, create a data file called 'mydata.' Use the first row for the variable names, without any spaces. Save it as a .csv file on your desktop. 
 
-- Class: text
-  Output: Now that you've created your file, let's learn how to import it into R. There are two steps. The first is to upload the data into a folder in R Studio Cloud, and the second is to import the data from that folder into R. 
+- Class: cmd_question
+  Output: Now that you've created your file, it takes two steps to import it into R. The first is to upload the data into a folder in R Studio Cloud, and the second is to import the data from that folder into R. After reading this (lengthy) set of instructions, go into play() mode to carry them out. In the window at the lower right hand corner of your R Studio screen, click on the Files tab to see the folders in your R Studio Cloud account. Create one for your work in these tutorials by clicking the New Folder button. Name it Bio110 Tutorials. Then click "upload" in the same window. Find your mydata.csv file on your desktop and upload it to the Home directory. You will see it on the File Manager screen. It's a good idea to organize all of your project's files into the same, well-labelled folder. To move mydata.csv into the Bio110 Tutorials folder you've created, check the box next to mydata.csv, and select "move" from the “More…” menu. Choose the Bio110 Tutorials folder as the destination. There are several ways to import the file into R Studio. First, go to the "Environment" window in the top right of your screen. Click on "Import Dataset." From the menu, select "From text (base)..." A new screen will open. Navigate to your file in the Bio110 Tutorials folder and select "open." An "import data set" window will open. You may need to change the file's name to “mydata”. Check in the data frame window that the data are in the expected format. Make sure that the “yes” button is selected under “Headings” to tell R to use your column names. Click "import". After you are finished, type nxt() to exit play mode.
+  CorrectAnswer: play()
+  AnswerTests: omnitest(correctExpr=‘play()’)
+  Hint: Type play()
 
 - Class: text
-  Output: In the window at the lower right hand corner of your R Studio screen, click on the files tab to see the folders in your R Studio Cloud account. Let's create one for your work in these tutorials. Click the New Folder button and name the folder Bio110 Tutorials. 
-
-- Class: text
-  Output: Then click "upload" in the same window. Find your mydata.csv file on your desktop and upload it to the Home target directory. You should see it on the File Manager screen. 
-
-- Class: text
-  Output:  It's a good idea to organize all of your project's files into the same, well-labelled folder. So let's move mydata.csv into the Bio110 Tutorials folder you've just created. To do that, check the box next to mydata.csv, and then select "move" from the More... menu. Choose the Bio110 Tutorials folder as the destination. 
-
-- Class: text
-  Output: Now you've completed the first step, putting the data into a folder. Next we need to import it into R Studio. There are several ways to do this. First, go to the "Environment" window in the top right of your screen. Click on "Import Dataset."
-
-- Class: text
-  Output: From the menu, select either "From text (base)..." or "From csv..." A new screen will open. Navigate to your file in the Bio110 Tutorials folder and select "open." 
-
-- Class: text
-  Output: An "import data set" window will open. If you wish, you may change the file's name and other attributes. You can make sure that the data frame window shows the data in the expected format. Click "import".
-
-- Class: text
-  Output: In your console, the command for importing the data will appear. The second way to import the data is to write this command yourself. The words within the quotes indicate the pathway that R uses to locate the file.
+  Output: The second way to import a data file is by writing an R command in the console. When you clicked on ‘Import,” the command you would write appeared in your console screen. The words within the quotes indicate the pathway that R uses to locate the file. When writing your own command, you would need to specify this path. 
 
 - Class: cmd_question
   Output: Now type the name of your dataset to see it displayed. 
