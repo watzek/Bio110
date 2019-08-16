@@ -1,0 +1,151 @@
+- Class: meta
+  Course: Bio110
+  Lesson: Intro_to_R
+  Author: your name goes here
+  Type: Standard
+  Organization: your organization's name goes here
+  Version: 2.4.4
+
+- Class: text
+  Output: Welcome to this Swirl introduction to R. You will learn how to enter data and to perform some basic operations.
+
+- Class: text
+  Output: R is a program for dealing with data. In Biology courses, most of the time your data will be in the form of a table with columns and rows.
+
+- Class: text
+  Output: "Later in this lesson, you will learn how to import a data table into R in order to work with it. For now, we will work with a very simple set of data: data for a single variable."
+
+- Class: text
+  Output: "For example, suppose you have measured the diameters of a sample of 8 bacterial colonies. The data values (in mm) are: 4, 3.5, 6.1, 2.2, 4.7, 3, 5.2, and 4.6."
+
+- Class: text
+  Output: "In R, you 'assign' these values to a variable name using an 'arrow' formed by the 'less than' symbol and the dash, like this: <-. On the left side of the arrow, put the name of the variable you wish to create. The name should be short, descriptive, and cannot contain any spaces. On the right of the arrow, type your data values, separated by commas. The data values should be enclosed in parentheses, and preceded by the letter c, which stands for 'concatenate' or 'combine' all the values into a single vector of values. This command creates a variable called 'diam' that contains our example data values: diam<-c(4,3.5,6.1,2.2,4.7,3,5.2,4.6)"
+
+- Class: cmd_question
+  Output: Now you try it. 
+  CorrectAnswer: diam<-c(4,3.5,6.1,2.2,4.7,3,5.2,4.6)
+  AnswerTests: omnitest(correctExpr='diam<-c(4,3.5,6.1,2.2,4.7,3,5.2,4.6)')
+  Hint: Don't forget the parentheses. 
+
+- Class: text
+  Output: If you are interested in knowing what a variable contains, you can just type its name. 
+
+- Class: cmd_question
+  Output: Try typing diam and see what you get. 
+  CorrectAnswer: diam
+  AnswerTests: omnitest(correctExpr='diam')
+  Hint: Type a hint.
+
+- Class: text
+  Output: If you would like to find out more about how to create variables and data tables in R, go to the Swirl course repository and take the tutorials titled "basic building blocks" and "vectors."
+
+- Class: text
+  Output: For most of your work in Bio 110 and other Biology courses, the easiest and most common way to enter a data table into R is to create it in Excel or Google Sheets first, and then import it.
+
+- Class: text
+  Output: It is important to format your data in a way that makes it easy for R to understand. If you have ever used SPSS, this format style will seem familiar.
+
+- Class: text
+  Output: "When you create your data table, each column should represent a different variable. For example, if your microbial study measured not only the diameters of the colonies, but also their color, and you made these measurements for 5 colonies on each of 20 Petri dishes, you would have 4 variables: Petri dish number, colony number, diameter, and color. Each individual colony would be represented by a separate row in the table."  
+
+- Class: text
+  Output: Typically, when you create an Excel data file, the first row is used for the names of the different variables. It is a good idea to do this when creating a table to import into R. Unlike variable names in Excel, however, variable names in R may not contain any spaces.  
+
+- Class: text
+  Output: When you are done making your data table in Excel or Google Sheets, save it with the extension .csv.
+
+- Class: text
+  Output: A table with this format has already been created for you and imported into this tutorial. It has been given the creative name of "data”. 
+
+- Class: cmd_question
+  Output: What do you think you should type in order to see a display of the data table called "data"?
+  CorrectAnswer: data
+  AnswerTests: omnitest(correctExpr='data')
+  Hint: To see an object in R, type its name. No quotes are required. 
+  
+- Class: text
+  Output: You can see that this data table contains 5 variables and 18 rows. (Each row is numbered sequentially; these numbers are not a variable.) These data are from a physiological study performed on 9 different individuals. Each individual's respiratory quotient (RQ) was measured twice, once under anaerobic conditions (1), and once under aerobic conditions (2). BMI stands for body mass index; note that these values remain the same under the different conditions. NA stands for "not available," meaning that the data for these combinations of individual and variable were lost or not recorded. 
+  
+- Class: text
+  Output: You might also wish to see just one of the variables in this data file. The way to specify an individual variable is to use the name of the data file, followed by the dollar sign, followed by the name of the variable -- with no spaces. 
+
+- Class: cmd_question
+  Output: What would you type to see a list of the BMI data values in this file?
+  CorrectAnswer: data$BMI
+  AnswerTests: omnitest(correctExpr='data$BMI')
+  Hint: Try data$BMI
+
+- Class: text
+  Output: In R, each variable is encoded as either numeric (a number), integer (a whole number), a factor (a category, expressed either as a word or a number), or character (a string of letters). There are other less common variable properties as well. A variable's property is important because certain kinds of operations can only be carried out in variables with certain properties.   
+
+- Class: text
+  Output: To find out the properties of all the variables in a data set, use the command str(dataname), using the name of your data file in place of the placeholder here. "Structure" refers to the properties of a data file.  
+
+- Class: cmd_question
+  Output: "Write a command that will allow you to see the structure of 'data.'" 
+  CorrectAnswer: str(data)
+  AnswerTests: omnitest(correctExpr='str(data)')
+  Hint: Try str(data)
+
+- Class: text
+  Output: "You can see that the variable data$Anaerobic_Aerobic is currently encoded as an integer. But it is actually a category variable. You can change this variable's property with the assignment arrow, in the following way: data$Anaerobic_Aerobic <-as.factor(data$Anaerobic_Aerobic)"  
+
+- Class: cmd_question
+  Output: Try changing the variable named "Individual" to a factor variable. 
+  CorrectAnswer: data$Individual<-as.factor(data$Individual)
+  AnswerTests: omnitest(correctExpr='data$Individual<-as.factor(data$Individual)')
+  Hint: Remember to use the dollar sign notation, and that R is case-sensitive.
+
+- Class: text
+  Output: Finally, let's learn how to import an Excel or Google Sheets data file into R. In another window for either Excel or Google sheets, create a data file called 'mydata.' Use the first row for the variable names, without any spaces. Save it as a .csv file on your desktop. 
+
+- Class: text
+  Output: Now that you've created your file, let's learn how to import it into R. There are two steps. The first is to upload the data into a folder in R Studio Cloud, and the second is to import the data from that folder into R. 
+
+- Class: text
+  Output: In the window at the lower right hand corner of your R Studio screen, click on the files tab to see the folders in your R Studio Cloud account. Let's create one for your work in these tutorials. Click the New Folder button and name the folder Bio110 Tutorials. 
+
+- Class: text
+  Output: Then click "upload" in the same window. Find your mydata.csv file on your desktop and upload it to the Home target directory. You should see it on the File Manager screen. 
+
+- Class: text
+  Output:  It's a good idea to organize all of your project's files into the same, well-labelled folder. So let's move mydata.csv into the Bio110 Tutorials folder you've just created. To do that, check the box next to mydata.csv, and then select "move" from the More... menu. Choose the Bio110 Tutorials folder as the destination. 
+
+- Class: text
+  Output: Now you've completed the first step, putting the data into a folder. Next we need to import it into R Studio. There are several ways to do this. First, go to the "Environment" window in the top right of your screen. Click on "Import Dataset."
+
+- Class: text
+  Output: From the menu, select either "From text (base)..." or "From csv..." A new screen will open. Navigate to your file in the Bio110 Tutorials folder and select "open." 
+
+- Class: text
+  Output: An "import data set" window will open. If you wish, you may change the file's name and other attributes. You can make sure that the data frame window shows the data in the expected format. Click "import".
+
+- Class: text
+  Output: In your console, the command for importing the data will appear. The second way to import the data is to write this command yourself. The words within the quotes indicate the pathway that R uses to locate the file.
+
+- Class: cmd_question
+  Output: Now type the name of your dataset to see it displayed. 
+  CorrectAnswer: mydata
+  AnswerTests: omnitest(correctExpr='mydata')
+  Hint: Did you name it "mydata"?
+
+- Class: cmd_question
+  Output: Use the str() command to look at the structure of mydata.
+  CorrectAnswer: str(mydata)
+  AnswerTests: omnitest(correctExpr='str(mydata)')
+  Hint: Type a hint.
+
+- Class: text
+  Output: Congratulations! You have finished the first R tutorial. You have learned how to create a variable in R, how to import a data table from Excel or Google Sheets into R, and how to examine and change the properties of different variables. 
+
+
+
+
+
+
+
+
+
+
+
+

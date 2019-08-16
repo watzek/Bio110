@@ -1,0 +1,125 @@
+- Class: meta
+  Course: Bio110
+  Lesson: lesson_two
+  Author: Paulette Bierzychudek
+  Type: Standard
+  Organization: Lewis & Clark College
+  Version: 2.4.4
+
+- Class: text
+  Output: Welcome to Swirl! In this lesson you will learn about measures of variability. 
+
+- Class: text
+  Output: You have already learned that one important way to summarize a set of data values is with a measure of central tendency, the mean or the median. 
+
+- Class: text
+  Output: Another important summary statistic is the amount of variation around that central tendency. 
+
+- Class: text
+  Output: This lesson contains a dataset that you will work with, named data. 
+
+- Class: cmd_question
+  Output: Type the word data to see what it contains. 
+  CorrectAnswer: data
+  AnswerTests: omnitest(correctExpr='data')
+  Hint: Did you spell data correctly? No quotation marks are needed. 
+
+- Class: text
+  Output: The dataset contains physiological data for a sample of individuals. 
+
+- Class: mult_question
+  Output: How many different individuals are in the sample?
+  AnswerChoices: 9;18;12
+  CorrectAnswer: 9
+  AnswerTests: omnitest(correctVal='9')
+  Hint: Each individual has a unique number. Some individuals may have been tested more than once. 
+
+- Class: text
+  Output: The Anaerobic_Aerobic variable specifies whether the measurements were made under Anaerobic (1) or Aerobic (2) conditions. 
+  
+- Class: text
+  Output: Suppose we want to compute the mean and the variability of RQ (respiratory quotient) for the individuals in our sample, but we want separate values for the anaerobic and aerobic conditions. 
+  
+- Class: text
+  Output: We can do this with the tapply() function, which allows us to compute the value of some function for a numeric variable that has been split into groups according to the values of another, category variable. 
+  
+- Class: text
+  Output: "For example, to get the mean RQ for each separate individual, we would use this code: tapply(data$RQ, data$Individual,mean)." 
+  
+- Class: cmd_question
+  Output: Find the mean RQ for the two conditions, anaerobic and aerobic.
+  CorrectAnswer: tapply(data$RQ,data$Anaerobic_Aerobic,mean)
+  AnswerTests: omnitest(correctExpr=‘tapply(data$RQ,data$Anaerobic_Aerobic,mean)')
+  Hint: The category variable is data$Anaerobic_Aerobic. Remember that R is case-sensitive.
+  
+- Class: text
+  Output: One common measure of variability is the variance. The variance is the square of the average deviation of each data value from the mean.
+
+- Class: text
+  Output: "You can compute the variance of a variable with the var() function." 
+
+- Class: cmd_question
+  Output: "Use var() to compute the variance of the RQ for the two conditions. Time-saving hint: use the up arrow to recall the previous command, and then modify it."
+  CorrectAnswer: tapply(data$RQ,data$Anaerobic_Aerobic,var)
+  AnswerTests: omnitest(correctExpr=‘tapply(data$RQ,data$Anaerobic_Aerobic,var)')
+  Hint: Use the tapply() function. 
+
+- Class: text
+  Output: Another common measure of variance is the standard deviation, which is simply the square root of the variance. The function for standard deviation is sd().
+
+- Class: cmd_question
+  Output: Compute the standard deviation of RQ for each of the two conditions. 
+  CorrectAnswer: tapply(data$RQ,data$Anaerobic_Aerobic,sd)
+  AnswerTests: omnitest(correctExpr=‘tapply(data$RQ,data$Anaerobic_Aerobic,sd)')
+  Hint: Did you spell anaerobic correctly?
+
+- Class: text
+  Output: One reason to compute the variability in a data set is to get an idea of how accurately we have estimated the mean of a population. Two additional measures of variability, standard error and confidence intervals, do this more usefully than variance or standard deviation. 
+
+- Class: text
+  Output: This is because both standard error and confidence intervals become smaller as the sample size, or number of data values, gets larger -- which reflects our increased certainty that our sample mean represents the true population mean. 
+  
+- Class: text
+  Output: To compute the standard error of a set of data in R, a special package called "plotrix" is required. In this tutorial, plotrix has already been installed for you. But when working outside the tutorial environment, you would need to load this package yourself. It isn't hard! 
+
+- Class: text
+  Output:  The function for computing the standard error is std.error().
+
+- Class: cmd_question
+  Output: Compute the standard error of RQ for each of the two conditions. 
+  CorrectAnswer: tapply(data$RQ, data$Anaerobic_Aerobic,std.error)
+  AnswerTests: omnitest(correctExpr=‘tapply(data$RQ, data$Anaerobic_Aerobic,std.error)')
+  Hint: Use the same syntax as you did for standard deviation.
+  
+- Class: text
+  Output: Confidence intervals are closely related to standard error. The 95% confidence interval is a range of data values that encloses the sample mean. There is a 95% probability that the "true" mean lies within the 95% confidence interval of the sample mean. 
+
+- Class: text
+  Output: "The easiest way to compute a 95% confidence interval is to use the t.test function." 
+
+- Class: text
+  Output: "The command for the t-test is t.test(dataname$variablename), using the actual datafile and variable names instead of the placeholders shown here."  
+
+- Class: cmd_question
+  Output: "Create a variable named 'sample' that contains these values: 9.0, 9.5, 9.6, 10.2, and 11.6."
+  CorrectAnswer: sample<-c(9.0, 9.5, 9.6, 10.2, 11.6)
+  AnswerTests: omnitest(correctExpr='sample<-c(9.0, 9.5, 9.6, 10.2, 11.6)')
+  Hint: Did you remember to use the assignment arrow and the concatenate operator? 
+
+- Class: cmd_question
+  Output: Now perform a t-test on the variable you have just created. 
+  CorrectAnswer: t.test(sample)
+  AnswerTests: omnitest(correctExpr='t.test(sample)')
+  Hint: Try t.test(sample)
+  
+- Class: text
+  Output: In the output, you should see the name of your data file, followed by two lines of information that are not relevant if you are only interested in knowing the 95% confidence interval. The confidence interval is on the following line, followed by a computation of the sample mean. 
+
+- Class: text
+  Output: So for these data, the sample mean is 9.98, the the 95% confidence interval ranges from a minimum value of 8.74 to a maximum of 11.2.
+  
+- Class: text
+  Output: Remember that in lesson one we learned that for some data sets, the mean is a good measure of the data's central tendency? When this is the case, we describe the distribution of data values as 'normal.'  
+
+- Class: text
+  Output: In the next lesson you will learn how to make a box plot, which is a suitable way of graphically displaying the central tendency and the variability of any data set, no matter how the values are distributed, normal or not. 
