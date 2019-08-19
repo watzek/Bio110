@@ -100,22 +100,16 @@
   Output: Finally, let's learn how to import an Excel or Google Sheets data file into R. In another window for either Excel or Google sheets, create a data file called 'mydata.' Use the first row for the variable names, without any spaces. Save it as a .csv file on your desktop. 
 
 - Class: cmd_question
-  Output: Now that you've created your file, it takes two steps to import it into R. The first is to upload the data into a folder in R Studio Cloud, and the second is to import the data from that folder into R. After reading this (lengthy) set of instructions, go into play() mode to carry out the first. In the window at the lower right hand corner of your R Studio screen, click on the Files tab to see the folders in your R Studio Cloud account. Create one for your work in these tutorials by clicking the New Folder button. Name it Bio110 Tutorials. Then click "upload" in the same window. Find your mydata.csv file on your desktop and upload it to the Home directory. You will see it on the File Manager screen. It's a good idea to organize all of your project's files into the same, well-labelled folder. To move mydata.csv into the Bio110 Tutorials folder you've created, check the box next to mydata.csv, and select "move" from the “More…” menu. Choose the Bio110 Tutorials folder as the destination. After you are finished, type nxt() to exit play mode.
-  CorrectAnswer: play()
-  AnswerTests: omnitest(correctExpr=‘play()’)
-  Hint: Type play()
-
-- Class: cmd_question
-  Output: ‘Now that the file is in your folder, you need to tell R to import it. The command is: my data<-read.csv(“~/Bio110 Tutorials/mydata.csv, header=T”) The text in quotes specifies the path that R must use to find the file. Header=T tells R that the first row contains the names of the variables. Try typing this command now.’
-  CorrectAnswer: my data<-read.csv(“~/Bio110 Tutorials/mydata.csv”)
-  AnswerTests: omnitest(correctExpr=‘my data<-read.csv(“~/Bio110 Tutorials/mydata.csv, header=T”)’
-  Hint: try my data<-read.csv(“~/Bio110 Tutorials/mydata.csv”)
+  Output: "Now that you have created your file, it takes two steps to import it into R. The first step is to upload the data into a folder in R Studio Cloud, and the second step is to import the data from that folder into R. After reading this (lengthy) set of instructions, go into play() mode to carry out the first step. In the window at the lower right hand corner of your R Studio screen, click on the Files tab to see the folders in your R Studio Cloud account. Create one for your work in these tutorials by clicking the New Folder button. Name it Bio110 Tutorials. Then click upload in the same window. Find your mydata.csv file on your desktop and upload it to the Home directory. You will see it on the File Manager screen. It's a good idea to organize all of your project's files into the same, well-labelled folder. To move mydata.csv into the Bio110 Tutorials folder you've created, check the box next to mydata.csv, and select move from the 'More…' menu. Choose the Bio110 Tutorials folder as the destination. Once the file is in your folder, you need to tell R to import it. The command you will use is: mydata<-read.csv('~/Bio110 Tutorials/mydata.csv', header=T) The text in quotes specifies the path that R must use to find the file. Header=T tells R that the first row contains the names of the variables. Right now, type play() at the prompt, and carry out step one as described above. Then type nxt() to exit play mode. This time, at the prompt, type the command to import your file into R."
+  CorrectAnswer: mydata<-read.csv('~/Bio110 Tutorials/mydata.csv', header=T)
+  AnswerTests: omnitest(correctExpr=‘mydata<-read.csv(“~/Bio110 Tutorials/mydata.csv”, header=T)’)
+  Hint: try mydata<-read.csv('~/Bio110 Tutorials/mydata.csv', header=T)
 
 - Class: cmd_question
   Output: Now type the name of your dataset to see it displayed. 
   CorrectAnswer: mydata
   AnswerTests: omnitest(correctExpr='mydata')
-  Hint: Did you name it "mydata"?
+  Hint: Did you name it mydata?
 
 - Class: cmd_question
   Output: Use the str() command to look at the structure of mydata.
