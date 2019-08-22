@@ -49,7 +49,7 @@
 - Class: cmd_question
   Output: Find the mean RQ for the two conditions, anaerobic and aerobic.
   CorrectAnswer: tapply(data$RQ,data$Anaerobic_Aerobic,mean)
-  AnswerTests: omnitest(correctExpr=‘tapply(data$RQ,data$Anaerobic_Aerobic,mean)')
+  AnswerTests: omnitest(correctExpr='tapply(data$RQ,data$Anaerobic_Aerobic,mean)')
   Hint: The category variable is data$Anaerobic_Aerobic. Remember that R is case-sensitive.
   
 - Class: text
@@ -61,7 +61,7 @@
 - Class: cmd_question
   Output: "Use var() to compute the variance of the RQ for the two conditions. Time-saving hint: use the up arrow to recall the previous command, and then modify it."
   CorrectAnswer: tapply(data$RQ,data$Anaerobic_Aerobic,var)
-  AnswerTests: omnitest(correctExpr=‘tapply(data$RQ,data$Anaerobic_Aerobic,var)')
+  AnswerTests: omnitest(correctExpr='tapply(data$RQ,data$Anaerobic_Aerobic,var)')
   Hint: Use the tapply() function. 
 
 - Class: text
@@ -70,7 +70,7 @@
 - Class: cmd_question
   Output: Compute the standard deviation of RQ for each of the two conditions. 
   CorrectAnswer: tapply(data$RQ,data$Anaerobic_Aerobic,sd)
-  AnswerTests: omnitest(correctExpr=‘tapply(data$RQ,data$Anaerobic_Aerobic,sd)')
+  AnswerTests: omnitest(correctExpr='tapply(data$RQ,data$Anaerobic_Aerobic,sd)')
   Hint: Did you spell anaerobic correctly?
 
 - Class: text
@@ -88,7 +88,7 @@
 - Class: cmd_question
   Output: Compute the standard error of RQ for each of the two conditions. 
   CorrectAnswer: tapply(data$RQ, data$Anaerobic_Aerobic,std.error)
-  AnswerTests: omnitest(correctExpr=‘tapply(data$RQ, data$Anaerobic_Aerobic,std.error)')
+  AnswerTests: omnitest(correctExpr='tapply(data$RQ, data$Anaerobic_Aerobic,std.error)')
   Hint: Use the same syntax as you did for standard deviation.
   
 - Class: text
