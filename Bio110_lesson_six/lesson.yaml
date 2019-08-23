@@ -128,7 +128,7 @@
   AnswerTests: omnitest(correctVal='temp')
   Hint: Use the variable that defines the categories. 
   
- - Class: text
+- Class: text
   Output: In lesson 3, you used the plot function to make both boxplots and scatterplots, depending on the nature of the independent variable (categorical or continuous). There is another boxplot command, creatively named boxplot. 
 
 - Class: text
