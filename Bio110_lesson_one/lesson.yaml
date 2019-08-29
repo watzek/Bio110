@@ -53,13 +53,13 @@
   Output: For data like these, the median is a better measure of central tendency. The median is the middle value when the data are ordered from lowest to highest. 
 
 - Class: text
-  Output: the function median() computes the median for a variable. 
+  Output: the function median() commputes the median for a variable. 
 
 - Class: cmd_question
   Output: Compute the median of data_two. 
   CorrectAnswer: median(data_two)
   AnswerTests: omnitest(correctExpr='median(data_two)')
-  Hint: Try median(data_two)
+  Hint: Type a hint.
 
 - Class: text
   Output: Notice that the median is not unduly influenced by the single large data value, and so is a more accurate measure of the center of the data values.
@@ -68,7 +68,7 @@
   Output: Write an expression for the difference between the mean and the median of data_two. Subtract the smaller value from the larger value. 
   CorrectAnswer: mean(data_two)-median(data_two)
   AnswerTests: omnitest(correctExpr='mean(data_two)-median(data_two)')
-  Hint: Separate these two quantities with a minus sign.
+  Hint: Type a hint.
 
 - Class: text
   Output: You may be wondering how to know whether to use the mean or the median. This can be especially challenging if you have a variable with many data values. 
@@ -83,19 +83,19 @@
   Output: The function hist() creates a histogram for a variable. 
 
 - Class: cmd_question
-  Output: Create a histogram for the original data variable, called "mydata"
-  CorrectAnswer: hist(mydata)
-  AnswerTests: omnitest(correctExpr='hist(mydata)')
-  Hint: Try hist(my data)
+  Output: Create a histogram for the original data set, called "mydata"
+  CorrectAnswer: hist(data)
+  AnswerTests: omnitest(correctExpr='hist(data)')
+  Hint: Type a hint.
   
 - Class: cmd_question
   Output: Now create a second histogram for data_two. 
   CorrectAnswer: hist(data_two)
   AnswerTests: omnitest(correctExpr='hist(data_two)')
-  Hint: Try hist(data_two)
+  Hint: Type a hint.
 
 - Class: text
-  Output: You can see from the histogram that the mean of data_two does not describe them well at all. When a histogram's peak is not near the center, and/or its two tails are quite asymetrical, it's best to use the median, not the mean, to summarize the central tendency. 
+  Output: You can see from the histogram that the mean of data_two does not describe them well at all. When a histogram's peak is not near the center, and/or its two tails are quite assymetrical, it's best to use the median, not the mean, to summarize the central tendency. 
 
 - Class: text
   Output: That's the end of this lesson on central tendency. Another important kind of descriptive statistic is variability, so be sure to look at that lesson as well. 

@@ -92,10 +92,10 @@
   Output: Try it now, using "Anaerobic" for the first category, and "Aerobic" for the second one. Put the names command in front of the arguments for the axis labels. 
   CorrectAnswer: plot(data$Anaerobic_Aerobic, data$RQ, names=c("Anaerobic","Aerobic"), xlab="condition", ylab="RQ") 
   AnswerTests: omnitest(correctExpr='plot(data$Anaerobic_Aerobic, data$RQ, names=c("Anaerobic","Aerobic"), xlab="condition", ylab="RQ")')
-  Hint: In this tutorial, R is looking for you to enter the arguments in a particular order. Try putting the names argument in front of the axis label argument -- this might be why you got an error message despite seeing the correct graph.
+  Hint: Remember that text is case-sensitive.
 
 - Class: text
-  Output: You might also want to use a wider range of values on the y-axis so that the figure has a little more elbow room. For example, the current y-axis starts at a RQ of -10 and ends at a value of .15. Maybe you'd like it to range from -0.20 to 0.25 instead.  
+  Output: You might also want to use a wider range of values on the y-axis so that the figure has a little more elbow room. For example, the current y-axis starts at a RQ of -.10 and ends at a value of .15. Maybe you'd like it to range from -0.20 to 0.25 instead.  
 
 - Class: text
   Output: "You can do this by inserting the 'ylim=c(lowerlimit, upperlimit)' argument into the plot command like this: plot(data$x, data$y, ylim=c(-.20, .25))" 

@@ -127,15 +127,9 @@
   CorrectAnswer: temp
   AnswerTests: omnitest(correctVal='temp')
   Hint: Use the variable that defines the categories. 
-  
-- Class: text
-  Output: In lesson 3, you used the plot function to make both boxplots and scatterplots, depending on the nature of the independent variable (categorical or continuous). There is another boxplot command, creatively named boxplot. 
-
-- Class: text
-  Output: In the boxplot command, any independent variable that is numeric is treated as a factor variable automatically. Its syntax is: boxplot(depvar ~ indepvar). 
 
 - Class: cmd_question
-  Output: Using the boxplot function, write the command to make a boxplot of weights for the two temp categories
+  Output: Write the command to make a boxplot of weights for the two temp categories
   CorrectAnswer: boxplot(sampledata$weight~sampledata$temp)
   AnswerTests: omnitest(correctExpr='boxplot(sampledata$weight~sampledata$temp)')
   Hint: In the parentheses, the dependent variable goes first, followed by the squiggle, and then the independent variable. 
@@ -209,13 +203,13 @@
   Output: We can see that length is quite different between diets 1 and 2, but not nearly as different between diets 2 and 3. Are these differences statistically significant?
 
 - Class: text
-  Output: "The command to perform an ANOVA is: model<-aov(depvar~indvar). This syntax (dependent variable, squiggle, independent variable) should be feeling familiar by now." 
+  Output: "The command to perform an ANOVA is: model<-aov(depvar~catvar). This syntax (dependent vafriable, squiggle, independent variable) should be feeling familiar by now." 
 
 - Class: cmd_question
   Output: Write a command to perform an ANOVA on length as a function of diet, and assign the result to a variable called dietaov. 
   CorrectAnswer: dietaov<-aov(sampledata$length~sampledata$diet)
   AnswerTests: omnitest(correctExpr='dietaov<-aov(sampledata$length~sampledata$diet)')
-  Hint: try dietaov<-aov(sampledata$length~sampledata$diet)
+  Hint: try dietaov<-aov(sampledata$length~sampleddata$diet)
 
 - Class: text
   Output: To see the output from the ANOVA, you can use the command summary(model), replacing the placeholder with your own model's name.
@@ -248,7 +242,7 @@
   Hint: Try TukeyHSD(dietaov)
 
 - Class: text
-  Output: The output is in the form of a table that compares each of the 3 groups to the others, with the p-value for that particular comparison as the final column. 
+  Output: The output is in the form of a table that compares each of the 3 groups to the others, with the p-valoue for that particular comparison as the final column. 
 
 - Class: text
   Output: We can see that diet group 1 differs significantly from group 2, and that group 1 differs from group 3, but that diet group 2 does NOT differ significantly from diet group 3. 
@@ -290,12 +284,6 @@
   CorrectAnswer: length2way<-aov(sampledata$length~sampledata$temp*sampledata$diet)
   AnswerTests: omnitest(correctExpr='length2way<-aov(sampledata$length~sampledata$temp*sampledata$diet)')
   Hint: Try length2way<-aov(sampledata$length~sampledata$temp*sampledata$diet)
-
-- Class: cmd_question
-  Output: Type a command that allows you to see what length2way contains.
-  CorrectAnswer: length2way
-  AnswerTests: omnitest(correctExpr='length2way')
-  Hint: Try length2way.
 
 - Class: text
   Output: The table of output gives the probability that the differences in length between the two temperatures could due to chance alone, and the probability that the differences in length among the three diets could be due to chance alone. The interaction term assesses whether the effect of temperature depends on which diet type the organism received. 

@@ -19,7 +19,7 @@
   Output: Type its name so that you can see what it contains.
   CorrectAnswer: bargraphdata
   AnswerTests: omnitest(correctExpr='bargraphdata')
-  Hint: Try bargraphdata.
+  Hint: Type a hint.
 
 - Class: cmd_question
   Output: It would also be good to understand the structure of the different variables. Type the command that allows you to see the structure of 'bargraphdata.'
@@ -40,7 +40,7 @@
   Output: You will need to tell R which data values should be used for each bar. The easiest way to do this is to subset 'var1' according to the value of 'treatment'.
 
 - Class: text
-  Output: "The subsetting command newname<-subset(data$var1, data$treatment=='A') creates a new variable that contains only those values of var1 from rows in the datafile where the value of treatment is A. The two equals signs mean 'exactly equal to' and the quotes are needed because treatment is a factor variable and A is therefore a character."  
+  Output: "The subsetting command newname<-subset(data$var1, data$treatment=='A') creates a new variable that contains only those values of var1 from rows in the datafile where the value of treatment is A. The two equals signs mean 'exactly equal to' and the parentheses are needed because treatment is a factor variable."  
 
 - Class: cmd_question
   Output: Write a command that creates a new variable called dataA that contains the values of var1 for plots that received treatment A.
@@ -104,10 +104,10 @@
   Output: "Adding the statement: plot.ci=T tells R that you are adding information about variability. (ci stands for confidence interval but is used here to refer to any measure of variability that you specify, =T means 'is true')"
 
 - Class: text
-  Output: "ci.u refers to the location of the upper portion of the error bar. The statement ci.u=c(mean(firstvariable)+sd(firstvariable), mean(secondvariable)+sd(secondvariable)) says to make both error bars the height of one standard deviation of their mean." 
+  Output: "ci.u refers to the location of the upper portion of the error bar. The statement ci.u=c(mean(x)+sd(x), mean(y)+sd(y)) says to make both error bars the height of one standard deviation of their mean." 
 
 - Class: text
-  Output: "The equivalent statement to specify the bottom of the error bar is: ci.l=c(mean(firstvariable)-sd(firstvariable), mean(secondvariable)-sd(secondvariable))"
+  Output: "The equivalent statement to specify the bottom of the error bar is: ci.l=c(mean(x)-sd(x), mean(y)-sd(y))"
 
 - Class: text
   Output: To make a bargraph with error bars representing one standard error above and below the mean, you would add these statements within the parentheses, after the statements about the axis labels. Separate each statement from the others with a comma. 
@@ -140,25 +140,19 @@
   Output: You could have two clusters, one for each treatment, and put the three years next to each other within each of the treatment clusters. This would be the best arrangement if you were particularly interested in comparing the years to each other. 
 
 - Class: text
-  Output: The alternative would be to have three clusters, one for each year, and put the two treatments next to each other within each of the year clusters. This would be the best arrangement if you were particularly interested in comparing the treatments to each other. 
+  Output: The alternative would be to have three clusters, one for each year, and put the two treatments next to each othe within each of the year clusters. This would be the best arrangement if you were particularly interested in comparing the treatments to each other. 
 
 - Class: text
   Output: To make either of these clustered bar graphs, you would go back to working with the original data file, bargraphdata, where the data are arranged in rows and columns. 
 
 - Class: text
-  Output: "You would start by making a table of the means of var1 for each of the 6 subgroups using this command: means<-tapply(bargraphdata$var1, list(bargraphdata$treatment, bargraphdata$year), mean). You learned to use the tapply command to split a dataset in lesson 2."
+  Output: "You would start by making a table of the means of var1 for each of the 6 subgroups using this command: means<-tapply(bargraphdata$var1, list(bargraphdata$treatment, bargraphdata$year), mean). You learned to use the sapply command to split a dataset in lesson 2, the tapply command is related and lets you compute a value such as the mean for combinations of factor variables."
 
 - Class: cmd_question
   Output: Try it yourself now. 
   CorrectAnswer: means<-tapply(bargraphdata$var1, list(bargraphdata$treatment, bargraphdata$year), mean)
   AnswerTests: omnitest(correctExpr='means<-tapply(bargraphdata$var1, list(bargraphdata$treatment, bargraphdata$year), mean)')
   Hint: Try means=tapply(bargraphdata$var1, list(bargraphdata$treatment, bargraphdata$year), mean)
-
-- Class: cmd_question
-  Output: Write a command to examine what the means table looks like. 
-  CorrectAnswer: means
-  AnswerTests: omnitest(correctExpr='means')
-  Hint: Try means. 
 
 - Class: text
   Output: The means table that you have created has two rows, one for each treatment, and three columns, one for each year. 
@@ -170,7 +164,7 @@
   Output: Using a similar formula, create such a table and call it 'errors'.
   CorrectAnswer: errors<-tapply(bargraphdata$var1,list(bargraphdata$treatment,bargraphdata$year),sd)
   AnswerTests: omnitest(correctExpr='errors<-tapply(bargraphdata$var1,list(bargraphdata$treatment,bargraphdata$year),sd)')
-  Hint: Use the same command as previously, substituting 'sd' for 'mean'
+  Hint: Use the same command as previously, substituting 'sd" for 'mean'
 
 - Class: text
   Output: The command for the clustered bar graph is similar to the one for a simple graph, but uses the matrices of means and errors that you have created.  
@@ -213,4 +207,3 @@
 
 - Class: text
   Output: That's it! Now you know how to use bargraphs to display your data. Remember that if the distribution of data values is highly non-normal, boxplots are a more appropriate form of graphical display. 
-

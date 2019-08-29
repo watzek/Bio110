@@ -55,7 +55,7 @@
   Output: When you are done making your data table in Excel or Google Sheets, save it with the extension .csv.
 
 - Class: text
-  Output: A table with this format has already been created for you and imported into this tutorial. It has been given the creative name of "data”. 
+  Output: A table with this format has already been created for you and imported into this tutorial. It has been given the creative name of "data." 
 
 - Class: cmd_question
   Output: What do you think you should type in order to see a display of the data table called "data"?
@@ -97,20 +97,17 @@
   Hint: Remember to use the dollar sign notation, and that R is case-sensitive.
 
 - Class: text
-  Output: Finally, let's learn how to import an Excel or Google Sheets data file into R. In another window for either Excel or Google sheets, create a data file called 'mydata.' Use the first row for the variable names, without any spaces. Save it as a .csv file on your desktop. 
+  Output: Finally, let's learn how to import an Excel or Google Sheets data file into R. You will not be able to actually do the importing until you type 'play()' to temporarily exit the tutorial. Wait for a prompt to do this. In either Excel or Google sheets, create a data file called 'mydata.' Use the first row for the variable names, without any spaces. Save it as a .csv file. Create a folder on your desktop called R folder where you store all your R work. Move mydata.csv into this folder. Do this now before continuing. 
 
+- Class: text
+  Output: "The following command will move 'mydata' into your R environment: mydata<-read.csv('mydata.csv',header=T) The statement 'header=T' tells R that the first row of the data table contains the variable names." 
+  
 - Class: cmd_question
-  Output: "Now that you have created your file, it takes two steps to import it into R. The first step is to upload the data into a folder in R Studio Cloud, and the second step is to import the data from that folder into R. After reading this (lengthy) set of instructions, go into play() mode to carry out the first step. In the window at the lower right hand corner of your R Studio screen, click on the Files tab to see the folders in your R Studio Cloud account. Create one for your work in these tutorials by clicking the New Folder button. Name it Bio110 Tutorials. Then click upload in the same window. Find your mydata.csv file on your desktop and upload it to the Home directory. You will see it on the File Manager screen. It's a good idea to organize all of your project's files into the same, well-labelled folder. To move mydata.csv into the Bio110 Tutorials folder you've created, check the box next to mydata.csv, and select move from the 'More…' menu. Choose the Bio110 Tutorials folder as the destination. Once the file is in your folder, you need to tell R to import it. The command you will use is: mydata<-read.csv('~/Bio110 Tutorials/mydata.csv', header=T) The text in quotes specifies the path that R must use to find the file. Header=T tells R that the first row contains the names of the variables. Right now, type play() at the prompt, and carry out step one as described above. Then type nxt() to exit play mode. This time, at the prompt, type the command to import your file into R."
-  CorrectAnswer: mydata<-read.csv('~/Bio110 Tutorials/mydata.csv', header=T)
-  AnswerTests: omnitest(correctExpr='mydata<-read.csv("~/Bio110 Tutorials/mydata.csv", header=T)')
-  Hint: try mydata<-read.csv('~/Bio110 Tutorials/mydata.csv', header=T)
-
-- Class: cmd_question
-  Output: Now type the name of your dataset to see it displayed. 
-  CorrectAnswer: mydata
-  AnswerTests: omnitest(correctExpr='mydata')
-  Hint: Did you name it mydata?
-
+  Output: "Now type play() to temporarily exit the tutorial and import your data file. When you are finished, type 'mydata' to see if you have been successful. If not, ask for help. If 'mydata' has been imported successfully, type nxt() at the prompt to resume the tutorial." 
+  CorrectAnswer: play()
+  AnswerTests: omnitest(correctExpr='play()')
+  Hint: Type a hint.
+  
 - Class: cmd_question
   Output: Use the str() command to look at the structure of mydata.
   CorrectAnswer: str(mydata)
@@ -119,15 +116,5 @@
 
 - Class: text
   Output: Congratulations! You have finished the first R tutorial. You have learned how to create a variable in R, how to import a data table from Excel or Google Sheets into R, and how to examine and change the properties of different variables. 
-
-
-
-
-
-
-
-
-
-
 
 

@@ -25,11 +25,47 @@
   Output: Suppose we wanted to look at a scatterplot of the relationship between body mass index (BMI) and respiratory quotient (RQ). 
 
 - Class: text
-  Output: When you examine the data frame, you can see that there are some rows that are missing data for BMI. In R, missing data are indicated by the letters NA. R will ignore these missing values when making a graph. 
+  Output: When you examine the data frame, you can see that there are some rows that are missing data for BMI. In R, missing data are indicated by the letters NA. R isn't sure what to do with these missing values. 
 
+- Class: mult_question
+  Output: Which rows of data have missing values for BMI?
+  AnswerChoices: 7&8;16&17;7,8,16&17
+  CorrectAnswer: 7,8,16&17
+  AnswerTests: omnitest(correctVal='7,8,16&17')
+  Hint: Did you read all the way down the table?
 
 - Class: text
-  Output: R has a function called plot which makes a graph of the relationship between an independent and a dependent variable. 
+  Output: A good solution is to remove those rows from the data frame before making a graph. You can accomplish this by subsetting your data frame. Subsetting uses boolean logic to pull out pieces of your data frame based on row/column indexing.
+
+- Class: text
+  Output: Indexing refers to using two numbers to specify the 'address' of a number in a data frame (table). We can specify an element in a data frame using the notation data[1,2] where 1 is the row number and 2 is the column number.
+
+- Class: text
+  Output: If we want to access all values in row 1 (all columns), we can use the notation data[1,]
+
+- Class: text
+  Output: Similarly, if we want all values in column 2 (all rows), we can type data[,2]
+
+- Class: text
+  Output: "Boolean logic allows us to use a series of operators to specify values that meet certain criteria. The operators are: < less than, <= less than or equal to, > greater than, >= greater than or equal to, != is not equal to, == is equal to, & and, | or"
+
+- Class: text
+  Output: Boolean logic is useful for subsetting because it allows us to select all of the values that meet a certain criterion.
+
+- Class: text
+  Output: To remove the rows with NAs, we can subset the data using the complete.cases() function to keep only the rows that contain values in every column. This will remove all rows that contain NAs.
+
+- Class: text
+  Output: "To use complete.cases() in subsetting, use it in the row index of the data frame, and repeat the data frame in parentheses. For example: data[complete.cases(data),] refers to those rows of data that are complete."
+
+- Class: cmd_question
+  Output: Subset out the NAs in the data frame using the complete.cases function and assign the output to a new data frame called complete_dat
+  CorrectAnswer: complete_dat<-data[complete.cases(data),]
+  AnswerTests: omnitest(correctExpr='complete_dat<-data[complete.cases(data),]')
+  Hint: Try complete_dat<-data[complete.cases(data),]
+
+- Class: text
+  Output: Now we can move on to make our scatterplot. R has a function called plot which makes a graph of the relationship between an independent and a dependent variable. 
 
 - Class: text
   Output: "When the independent variable is continuous, plot creates a scatterplot. (When the independent variable is categorical, the plot command creates a boxplot.)" 
@@ -39,9 +75,9 @@
   
 - Class: cmd_question
   Output: Use the plot command to plot the relationship between BMI (on the x-axis) and RQ (on the y-axis).
-  CorrectAnswer: plot(data$BMI,data$RQ)
-  AnswerTests: omnitest(correctExpr='plot(data$BMI,data$RQ)')
-  Hint: try plot(data$BMI,data$RQ)
+  CorrectAnswer: plot(complete_dat$BMI,complete_dat$RQ)
+  AnswerTests: omnitest(correctExpr='plot(complete_dat$BMI,complete_dat$RQ)')
+  Hint: try plot(complete_dat$BMI,complete_dat$RQ)
   
 - Class: text
   Output: Now that we have a basic graph, let's learn how to adjust some of the plotting parameters to change things like color, text size, axis labels, axis limits, and point style.
@@ -57,8 +93,8 @@
 
 - Class: cmd_question
   Output: Try generating the original plot with blue points.Be sure to put double quotations around the color name.
-  CorrectAnswer: plot(data$BMI,data$RQ,col='blue')
-  AnswerTests: omnitest(correctExpr='plot(data$BMI,data$RQ,col="blue")')
+  CorrectAnswer: plot(complete_dat$BMI,complete_dat$RQ,col='blue')
+  AnswerTests: omnitest(correctExpr='plot(complete_dat$BMI,complete_dat$RQ,col="blue")')
   Hint: type col="blue" following the y argument. 
 
 - Class: video
@@ -70,9 +106,9 @@
 
 - Class: cmd_question
   Output: Generate the original plot with blue points and pch=16. This will plot closed circles.
-  CorrectAnswer: plot(data$BMI,data$RQ,col='blue',pch=16)
-  AnswerTests: omnitest(correctExpr='plot(data$BMI,data$RQ,col="blue",pch=16)')
-  Hint: Try plot(data$BMI,data$RQ,col="blue",pch=16)
+  CorrectAnswer: plot(complete_dat$BMI,complete_dat$RQ,col='blue',pch=16)
+  AnswerTests: omnitest(correctExpr='plot(complete_dat$BMI,complete_dat$RQ,col="blue",pch=16)')
+  Hint: Try plot(complete_dat$BMI,complete_dat$RQ,col="blue",pch=16)
 
 - Class: cmd_question
   Output: Look at the help page for pch to see all of the possible symbols and their associated codes.
@@ -81,22 +117,22 @@
   Hint: Type ?pch
 
 - Class: text
-  Output: Our points are looking a little small. Let's make them larger with the cex= argument, which expands the character by a factor you can specify. As a default, they are set to cex=1.
+  Output: Our points are looking a little small. Let's make them larger with the cex= argument. As a default, they are set to cex=1.
 
 - Class: cmd_question
-  Output: Re-generate the original figure with blue, closed points and cex=2, i.e. points that are twice as large as before.
-  CorrectAnswer: plot(data$BMI,data$RQ,col="blue",pch=16,cex=2)
-  AnswerTests: omnitest(correctExpr='plot(data$BMI,data$RQ,col="blue",pch=16,cex=2)')
-  Hint: Type plot(data$BMI,data$RQ,col="blue",pch=16,cex=2)
+  Output: Re-generate the original figure with blue, closed points and cex=2
+  CorrectAnswer: plot(complete_dat$BMI,complete_dat$RQ,col="blue",pch=16,cex=2)
+  AnswerTests: omnitest(correctExpr='plot(complete_dat$BMI,complete_dat$RQ,col="blue",pch=16,cex=2)')
+  Hint: Type plot(complete_dat$BMI,complete_dat$RQ,col="blue",pch=16,cex=2)
 
 - Class: text
   Output: Our axis labels aren't particularly clear or useful as is. Let's change them using the xlab='' and ylab='' arguments. Because the labels are character strings, we need to enclose them in double quotes.
 
 - Class: cmd_question
   Output: Re-generate the original figure with "BMI" as the x-axis label and "RQ" as the y-axis label and all of the other updated graphical parameters. Specify the x-axis label before the y-axis label.
-  CorrectAnswer: plot(data$BMI,data$RQ,col='blue',pch=16,cex=2,xlab='BMI',ylab='RQ')
-  AnswerTests: omnitest(correctExpr='plot(data$BMI,data$RQ,col="blue",pch=16,cex=2,xlab="BMI",ylab="RQ")')
-  Hint: Type plot(data$BMI,data$RQ,col='blue',pch=16,cex=2,xlab="BMI",ylab="RQ")
+  CorrectAnswer: plot(complete_dat$BMI,complete_dat$RQ,col='blue',pch=16,cex=2,xlab='BMI',ylab='RQ')
+  AnswerTests: omnitest(correctExpr='plot(complete_dat$BMI,complete_dat$RQ,col="blue",pch=16,cex=2,xlab="BMI",ylab="RQ")')
+  Hint: Type plot(complete_dat$BMI,complete_dat$RQ,col='blue',pch=16,cex=2,xlab="BMI",ylab="RQ")
 
 - Class: text
   Output: Now you've learned the basics of creating a scatterplot when both the x and y variables are continuous. You know how to alter many aspects of your figure's appearance to make it clearer.
@@ -180,13 +216,13 @@
   Output: Now we have created a plot that has no numerical labels on the x-axis. We can now use the axis command to specify what our x-axis should look like. 
 
 - Class: text
-  Output: "The syntax of this command is: axis(side, at=1:2,labels=c('category1name', 'category2name', etc.)) 'Side' indicates which axis of the graph to modify; 'at' shows where the labels should be placed. "
+  Output: "The syntax of this command is: axis(side, at=1:2,labels=c('category1name', 'category2name', etc.)) 'Side' indicates which axis of the graph to modify; 'at' shows where the labels shoudl be placed. "
 
 - Class: cmd_question
   Output: Add a new x-axis to your plot that labels the former '1' category as anaerobic and the former '2' category as aerobic. For 'side,' use a 1, which represents the bottom axis of the figure. 
   CorrectAnswer: axis(1,at=1:2, labels=c("anaerobic","aerobic"))
   AnswerTests: omnitest(correctExpr='axis(1,at=1:2, labels=c("anaerobic","aerobic"))')
-  Hint: No need to retype the plot command unless you have made some errors and you'd like a fresh version. The axis command adds an axis to a pre-existing plot.
+  Hint: No need to retype the plot command. The axis command adds an axis to a pre-existing plot.
 
 - Class: text
   Output: That's it! Now you're an expert in making scatterplots. 
