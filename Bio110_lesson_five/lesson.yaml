@@ -7,13 +7,13 @@
   Version: 2.4.4
 
 - Class: text
-  Output: Welcome back to Swirl. In this lesson, you will learn how to create simple bar graphs with error bars and clustered bar graphs. 
+  Output: Welcome back to Swirl. In this lesson, you will learn how to create simple bar graphs with error bars and clustered bar graphs.
 
 - Class: text
-  Output: You will need two special packages, 'gplots' and 'plotrix,' which this tutorial loads automatically. If you work outside of the tutorial, don't forget to load these yourself. 
+  Output: You will need two special packages, 'gplots' and 'plotrix,' which this tutorial loads automatically. If you work outside of the tutorial, don't forget to load these yourself.
 
 - Class: text
-  Output: A dataset called 'bargraphdata' has been included in this tutorial. 
+  Output: A dataset called 'bargraphdata' has been included in this tutorial.
 
 - Class: cmd_question
   Output: Type its name so that you can see what it contains.
@@ -28,19 +28,19 @@
   Hint: Try str(bargraphdata).
 
 - Class: text
-  Output: This dataset contains three variables. The data come from an experimental field study that lasted three years and involved 20 study plots that received one of two different experimental treatments. The first, var1, are the measurements that were made in each of the plots; this variable is numerical. The second, treatment, refers to whether a particular study plot received treatment A or treatment B; this is a factor (category) variable. The third, year, refers to the year in which the measurement was made.  
+  Output: This dataset contains three variables. The data come from an experimental field study that lasted three years and involved 20 study plots that received one of two different experimental treatments. The first, var1, are the measurements that were made in each of the plots; this variable is numerical. The second, treatment, refers to whether a particular study plot received treatment A or treatment B; this is a factor (category) variable. The third, year, refers to the year in which the measurement was made.
 
 - Class: text
-  Output: Suppose you want to make a barplot that compares the means of var1 for each treatment. For now, imagine that you do not care about the year the measurement was made. 
+  Output: Suppose you want to make a barplot that compares the means of var1 for each treatment. For now, imagine that you do not care about the year the measurement was made.
 
 - Class: text
-  Output: The first thing you need to do is to identify the data that will be used to make each bar. Right now all of the data values for both bars are part of the same variable, var1. 
+  Output: The first thing you need to do is to identify the data that will be used to make each bar. Right now all of the data values for both bars are part of the same variable, var1.
 
 - Class: text
   Output: You will need to tell R which data values should be used for each bar. The easiest way to do this is to subset 'var1' according to the value of 'treatment'.
 
 - Class: text
-  Output: "The subsetting command newname<-subset(data$var1, data$treatment=='A') creates a new variable that contains only those values of var1 from rows in the datafile where the value of treatment is A. The two equals signs mean 'exactly equal to' and the parentheses are needed because treatment is a factor variable."  
+  Output: "The subsetting command newname<-subset(data$var1, data$treatment=='A') creates a new variable that contains only those values of var1 from rows in the datafile where the value of treatment is A. The two equals signs mean 'exactly equal to' and the parentheses are needed because treatment is a factor variable."
 
 - Class: cmd_question
   Output: Write a command that creates a new variable called dataA that contains the values of var1 for plots that received treatment A.
@@ -55,32 +55,32 @@
   Hint: Try dataB<-subset(bargraphdata$var1, bargraphdata$treatment=="B")
 
 - Class: text
-  Output: "The command for making this plot is barplot2(height=c(mean(firstvariable), mean(secondvariable))). In this command,'firstvariable' and 'secondvariable' are placeholders for the variable names you wish to represent by the first and second bars."  
+  Output: "The command for making this plot is barplot2(height=c(mean(firstvariable), mean(secondvariable))). In this command,'firstvariable' and 'secondvariable' are placeholders for the variable names you wish to represent by the first and second bars."
 
 - Class: mult_question
   Output: If you wish to show the data for treatment A as the first bar, what variable name should you choose for 'firstvariable'?
   AnswerChoices: bargraphdata$treatment;dataA;bargraphdata$dataA;var1
   CorrectAnswer: dataA
   AnswerTests: omnitest(correctVal='dataA')
-  Hint: Because you created dataA as a separate variable, and it is not part of the bargraphdata file, you should not specify the file name. 
+  Hint: Because you created dataA as a separate variable, and it is not part of the bargraphdata file, you should not specify the file name.
 
 - Class: cmd_question
-  Output: Write a command that will create a bargraph comparing the means of var1 for the two experimental treatments. 
+  Output: Write a command that will create a bargraph comparing the means of var1 for the two experimental treatments.
   CorrectAnswer: barplot2(height=c(dataA, mean(dataB)))
   AnswerTests: omnitest(correctExpr='barplot2(height=c(mean(dataA), mean(dataB)))')
   Hint: Try barplot2(height=c(mean(dataA), mean(dataB)))
 
 - Class: text
-  Output: "You have a nice basic bargraph, but the two bars are not labelled. To add the letters 'A' and 'B' underneath the bars, you can include the statement: names.arg=c('A', 'B') in the parentheses after the height statement, separating the two statements by a comma." 
+  Output: "You have a nice basic bargraph, but the two bars are not labelled. To add the letters 'A' and 'B' underneath the bars, you can include the statement: names.arg=c('A', 'B') in the parentheses after the height statement, separating the two statements by a comma."
 
 - Class: cmd_question
-  Output: Rewrite the barplot command to include an A label for the first bar and a B label for the second bar. Remember, hitting the up arrow recalls the previous command(s), saving you retyping them. 
+  Output: Rewrite the barplot command to include an A label for the first bar and a B label for the second bar. Remember, hitting the up arrow recalls the previous command(s), saving you retyping them.
   CorrectAnswer: barplot2(height=c(mean(dataA),mean(dataB)),names.arg=c("A","B"))
   AnswerTests: omnitest(correctExpr='barplot2(height=c(mean(dataA),mean(dataB)),names.arg=c("A","B"))')
   Hint: barplot2(height=c(mean(dataA),mean(dataB)),names.arg=c("A","B")).
 
 - Class: text
-  Output: The graph is also missing axis labels. Think about how you added axis labels when you made a boxplot. 
+  Output: The graph is also missing axis labels. Think about how you added axis labels when you made a boxplot.
 
 - Class: text
   Output: "You can do the same thing here, by specifying xlab='your label text' and ylab='your label text' after you specify the heights of the bars and their labels."
@@ -92,28 +92,28 @@
   Hint: Try barplot2(height=c(mean(dataA), mean(dataB)),names.arg=c("A","B"),xlab="treatment", ylab="variable one")
 
 - Class: text
-  Output: In lesson two, you learned about the importance of describing the variability in the data as well as its central tendency. This bargraph does not show the variability in var1. You can do that by adding error bars to the bars. 
+  Output: In lesson two, you learned about the importance of describing the variability in the data as well as its central tendency. This bargraph does not show the variability in var1. You can do that by adding error bars to the bars.
 
 - Class: text
-  Output: "The error bars can represent whatever measure of variability you choose: standard deviation, standard error, or 95% confidence limits."  
+  Output: "The error bars can represent whatever measure of variability you choose: standard deviation, standard error, or 95% confidence limits."
 
 - Class: text
-  Output: Adding error bars to your plot involves putting more statements into the parentheses. These look complicated, but we will explain what each part means so you can decide how to modify it. 
+  Output: Adding error bars to your plot involves putting more statements into the parentheses. These look complicated, but we will explain what each part means so you can decide how to modify it.
 
 - Class: text
   Output: "Adding the statement: plot.ci=T tells R that you are adding information about variability. (ci stands for confidence interval but is used here to refer to any measure of variability that you specify, =T means 'is true')"
 
 - Class: text
-  Output: "ci.u refers to the location of the upper portion of the error bar. The statement ci.u=c(mean(x)+sd(x), mean(y)+sd(y)) says to make both error bars the height of one standard deviation of their mean." 
+  Output: "ci.u refers to the location of the upper portion of the error bar. The statement ci.u=c(mean(x)+sd(x), mean(y)+sd(y)) says to make both error bars the height of one standard deviation of their mean."
 
 - Class: text
   Output: "The equivalent statement to specify the bottom of the error bar is: ci.l=c(mean(x)-sd(x), mean(y)-sd(y))"
 
 - Class: text
-  Output: To make a bargraph with error bars representing one standard error above and below the mean, you would add these statements within the parentheses, after the statements about the axis labels. Separate each statement from the others with a comma. 
+  Output: To make a bargraph with error bars representing one standard error above and below the mean, you would add these statements within the parentheses, after the statements about the axis labels. Separate each statement from the others with a comma.
 
 - Class: cmd_question
-  Output: Write a command for a bargraph with A and B bar labels, axis labels of 'treatment' and 'variable one', and standard deviation bars. 
+  Output: Write a command for a bargraph with A and B bar labels, axis labels of 'treatment' and 'variable one', and standard deviation bars.
   CorrectAnswer: barplot2(height=c(mean(dataA), mean(dataB)), names.arg=c("A","B"), xlab="treatment", ylab="variable one", plot.ci=T, ci.u=c(mean(dataA)+sd(dataA), mean(dataB)+sd(dataB)), ci.l=c(mean(dataA)-sd(dataA), mean(dataB)-sd(dataB)))
   AnswerTests: omnitest(correctExpr='barplot2(height=c(mean(dataA), mean(dataB)), names.arg=c("A","B"), xlab="treatment", ylab="variable one", plot.ci=T, ci.u=c(mean(dataA)+sd(dataA), mean(dataB)+sd(dataB)), ci.l=c(mean(dataA)-sd(dataA), mean(dataB)-sd(dataB)))')
   Hint: Try barplot2(height=c(mean(dataA), mean(dataB)), names.arg=c("A","B"), xlab="treatment", ylab="variable one", plot.ci=T, ci.u=c(mean(dataA)+sd(dataA), mean(dataB)+sd(dataB)), ci.l=c(mean(dataA)-sd(dataA), mean(dataB)-sd(dataB))).
@@ -122,43 +122,43 @@
   Output: "If you would rather show standard error bars and you have loaded plotrix, you can substitute 'std.error' for 'sd' and get a bargraph with standard error bars."
 
 - Class: cmd_question
-  Output: Since plotrix is loaded into this tutorial, try it. 
+  Output: Since plotrix is loaded into this tutorial, try it.
   CorrectAnswer: barplot2(height=c(mean(dataA), mean(dataB)), names.arg=c("A","B"), xlab="treatment", ylab="variable one", plot.ci=T, ci.u=c(mean(dataA)+std.error(dataA), mean(dataB)+std.error(dataB)), ci.l=c(mean(dataA)-std.error(dataA), mean(dataB)-std.error(dataB)))
   AnswerTests: omnitest(correctExpr='barplot2(height=c(mean(dataA), mean(dataB)), names.arg=c("A","B"), xlab="treatment", ylab="variable one", plot.ci=T, ci.u=c(mean(dataA)+std.error(dataA), mean(dataB)+std.error(dataB)), ci.l=c(mean(dataA)-std.error(dataA), mean(dataB)-std.error(dataB)))')
   Hint: Try barplot2(height=c(mean(dataA), mean(dataB)), names.arg=c("A","B"), xlab="treatment", ylab="variable one", plot.ci=T, ci.u=c(mean(dataA)+std.error(dataA), mean(dataB)+std.error(dataB)), ci.l=c(mean(dataA)-std.error(dataA), mean(dataB)-std.error(dataB)))
 
 - Class: text
-  Output: Suppose you were interested in a bar graph that not only compared the treatments, but also displayed if and how the years different from each other. You can do this with what is called a clustered bar graph.  
+  Output: Suppose you were interested in a bar graph that not only compared the treatments, but also displayed if and how the years different from each other. You can do this with what is called a clustered bar graph.
 
 - Class: text
-  Output: In this case, a clustered bar graph would have six different bars, one for each combination of treatment and year. 
+  Output: In this case, a clustered bar graph would have six different bars, one for each combination of treatment and year.
 
 - Class: text
   Output: "There are two ways of 'clustering' these six bars, depending on what comparison you were most interested in."
 
 - Class: text
-  Output: You could have two clusters, one for each treatment, and put the three years next to each other within each of the treatment clusters. This would be the best arrangement if you were particularly interested in comparing the years to each other. 
+  Output: You could have two clusters, one for each treatment, and put the three years next to each other within each of the treatment clusters. This would be the best arrangement if you were particularly interested in comparing the years to each other.
 
 - Class: text
-  Output: The alternative would be to have three clusters, one for each year, and put the two treatments next to each othe within each of the year clusters. This would be the best arrangement if you were particularly interested in comparing the treatments to each other. 
+  Output: The alternative would be to have three clusters, one for each year, and put the two treatments next to each othe within each of the year clusters. This would be the best arrangement if you were particularly interested in comparing the treatments to each other.
 
 - Class: text
-  Output: To make either of these clustered bar graphs, you would go back to working with the original data file, bargraphdata, where the data are arranged in rows and columns. 
+  Output: To make either of these clustered bar graphs, you would go back to working with the original data file, bargraphdata, where the data are arranged in rows and columns.
 
 - Class: text
   Output: "You would start by making a table of the means of var1 for each of the 6 subgroups using this command: means<-tapply(bargraphdata$var1, list(bargraphdata$treatment, bargraphdata$year), mean). You learned to use the sapply command to split a dataset in lesson 2, the tapply command is related and lets you compute a value such as the mean for combinations of factor variables."
 
 - Class: cmd_question
-  Output: Try it yourself now. 
+  Output: Try it yourself now.
   CorrectAnswer: means<-tapply(bargraphdata$var1, list(bargraphdata$treatment, bargraphdata$year), mean)
   AnswerTests: omnitest(correctExpr='means<-tapply(bargraphdata$var1, list(bargraphdata$treatment, bargraphdata$year), mean)')
   Hint: Try means=tapply(bargraphdata$var1, list(bargraphdata$treatment, bargraphdata$year), mean)
 
 - Class: text
-  Output: The means table that you have created has two rows, one for each treatment, and three columns, one for each year. 
+  Output: The means table that you have created has two rows, one for each treatment, and three columns, one for each year.
 
 - Class: text
-  Output: If you want your bar graph to include standard deviation bars, you need a similar table of the standard deviations. 
+  Output: If you want your bar graph to include standard deviation bars, you need a similar table of the standard deviations.
 
 - Class: cmd_question
   Output: Using a similar formula, create such a table and call it 'errors'.
@@ -167,43 +167,52 @@
   Hint: Use the same command as previously, substituting 'sd" for 'mean'
 
 - Class: text
-  Output: The command for the clustered bar graph is similar to the one for a simple graph, but uses the matrices of means and errors that you have created.  
+  Output: The command for the clustered bar graph is similar to the one for a simple graph, but uses the matrices of means and errors that you have created.
 
 - Class: text
   Output: "The command is: barplot2(means, plot.ci=T, ci.u=means+errors, ci.l=means-errors, beside=T). beside=T tells R to put the bars side-by-side instead of stacking them on top of one another."
 
 - Class: cmd_question
-  Output: Try executing this command. 
+  Output: Try executing this command.
   CorrectAnswer: barplot2(means, plot.ci=T, ci.u=means+errors, ci.l=means-errors, beside=T)
   AnswerTests: omnitest(correctExpr='barplot2(means, plot.ci=T, ci.u=means+errors, ci.l=means-errors, beside=T)')
   Hint: Type a hint.
 
 - Class: text
-  Output: Notice that this is the second kind of clustered bar graph, which shows a cluster that compares the two treatments within each year. 
+  Output: Notice that this is the second kind of clustered bar graph, which shows a cluster that compares the two treatments within each year.
 
 - Class: text
-  Output: "If you are more interested in creating two clusters, one for each treatment, you can do that by transposing the matrices of mean and sd values. Transposing a matrix means that the rows become the columns and the columns become the rows. The transpose command is t()." 
+  Output: "If you are more interested in creating two clusters, one for each treatment, you can do that by transposing the matrices of mean and sd values. Transposing a matrix means that the rows become the columns and the columns become the rows. The transpose command is t()."
 
 - Class: text
   Output: "When two tables having the same dimensions are added or subtracted, the result is another table of the same dimensions, with each element having been added to or subtracted from the corresponding element. This means that you do not need to transpose the 'errors' table separately; you can use t(means+errors) and t(means-errors) to revise this command."
 
 - Class: cmd_question
-  Output: Write a new command using the t() function to create a graph with two treatment clusters of three years each.  
+  Output: Write a new command using the t() function to create a graph with two treatment clusters of three years each.
   CorrectAnswer: barplot2(t(means), plot.ci=T, ci.u=t(means+errors), ci.l=t(means-errors), beside=T)
   AnswerTests: omnitest(correctExpr='barplot2(t(means), plot.ci=T, ci.u=t(means+errors), ci.l=t(means-errors), beside=T)')
   Hint: Try barplot2(t(means), plot.ci=T, ci.u=t(means+errors), ci.l=t(means-errors), beside=T)
 
 - Class: text
-  Output: With a clustered barplot, it is important to include a legend so that the reader can interpret the graph; axis labels are not enough. 
+  Output: With a clustered barplot, it is important to include a legend so that the reader can interpret the graph; axis labels are not enough.
 
 - Class: text
   Output: "The legend command creates a legend. The command: legend('topleft',legend=c('Year 1','Year 2','Year 3'), fill=c('red', 'orange','yellow')) will place a legend in the top left-hand corner of the graph."
 
 - Class: cmd_question
-  Output: Try it yourself now. 
+  Output: Try it yourself now.
   CorrectAnswer: legend("topright",legend=c("Year 1","Year 2","Year 3"), fill=c("red","orange","yellow"))
   AnswerTests: omnitest(correctExpr='legend("topright",legend=c("Year 1", "Year 2", "Year 3"), fill=c("red", "orange", "yellow"))')
   Hint: Type a hint.
 
+- Class: mult_question
+  Output: Would you like to submit the log of this lesson to Google Forms so
+    that your instructor may evaluate your progress?
+  AnswerChoices: Yes;No
+  CorrectAnswer: NULL
+  AnswerTests: submit_log()
+  Hint: hint
+
+
 - Class: text
-  Output: That's it! Now you know how to use bargraphs to display your data. Remember that if the distribution of data values is highly non-normal, boxplots are a more appropriate form of graphical display. 
+  Output: That's it! Now you know how to use bargraphs to display your data. Remember that if the distribution of data values is highly non-normal, boxplots are a more appropriate form of graphical display.
